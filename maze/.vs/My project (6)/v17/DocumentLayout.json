@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\My project (6)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|c:\\users\\user\\my project (6)\\assets\\scripts\\gridstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gridstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|C:\\Users\\User\\My project (6)\\assets\\scripts\\maze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\maze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|C:\\Users\\User\\My project (6)\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|C:\\Users\\User\\My project (6)\\assets\\scripts\\algorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{618AA404-C303-DC6A-AA05-B45F03D8038B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\algorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Algorithm.cs",
+              "DocumentMoniker": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\Algorithm.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Algorithm.cs",
+              "ToolTip": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\Algorithm.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Algorithm.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFIAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T11:21:13.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Tile.cs",
+              "DocumentMoniker": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\Tile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
+              "ToolTip": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\Tile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowDwAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T09:00:06.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GridStep.cs",
+              "DocumentMoniker": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\GridStep.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GridStep.cs",
+              "ToolTip": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\GridStep.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GridStep.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T11:02:54.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Maze.cs",
+              "DocumentMoniker": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\Maze.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Maze.cs",
+              "ToolTip": "C:\\Users\\User\\My project (6)\\Assets\\Scripts\\Maze.cs*",
+              "RelativeToolTip": "Assets\\Scripts\\Maze.cs*",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T08:50:45.852Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
