@@ -5,17 +5,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class NewBehaviourScript : MonoBehaviour, IGame
+public class Maze : MonoBehaviour, IGame
 {
     [SerializeField] private int _width, _height;
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private MyButton _btnPrefab;
 
-    [SerializeField] private List<List<Tile>> _tiles;
+    public List<List<Tile>> _tiles;
     
 
     [SerializeField] private Transform _cam;
 
+    public Vector2Int startTilePosition;
     public List<GridStep> _steps = new List<GridStep>();
 
     void Start()
@@ -34,7 +35,7 @@ public class NewBehaviourScript : MonoBehaviour, IGame
         GenerateGrid();
 
         //StartCoroutine(AnimateSearch());
-        StartSearch(new BreadthFS());
+       // StartSearch(new BreadthFS());
     }
 
     void GenerateGrid()
@@ -47,33 +48,34 @@ public class NewBehaviourScript : MonoBehaviour, IGame
             {
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(i, j), Quaternion.identity);
                 spawnedTile.transform.parent = gameObject.transform;
-
+                
                 spawnedTile.name = $"Tile {i} {j}";
 
-                var isOffset = (i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0);
-
                 spawnedTile.InitState(i, j);
+              
+                Vector2Int tilePos = new Vector2Int(i, j);
+                spawnedTile.SetType(TileTypes.WALKABLE, IsOffset(tilePos));
 
                 // set StartPoint & EndPoint & Walkable
                 if (i == 0 && j == 0)
                 {
-                    spawnedTile.SetType(TileTypes.START, isOffset);
+                   // spawnedTile.SetType(TileTypes.START, isOffset);
                 }
                 else if (i == _width - 1 && j == _height - 1)
                 {
-                    spawnedTile.SetType(TileTypes.END, isOffset);
+                   // spawnedTile.SetType(TileTypes.END, isOffset);
                 }
                 else if(i == 4 && j < 5)
                 {
-                    spawnedTile.SetType(TileTypes.WALL, isOffset);
+                  //  spawnedTile.SetType(TileTypes.WALL, isOffset);
                 }
                 else if (j == 4 && i < 3)
                 {
-                    spawnedTile.SetType(TileTypes.WALL, isOffset);
+                  //  spawnedTile.SetType(TileTypes.WALL, isOffset);
                 }
                 else 
                 {
-                    spawnedTile.SetType(TileTypes.WALKABLE, isOffset);
+                
                 }
 
                 // Add the tile to the current row
@@ -88,7 +90,7 @@ public class NewBehaviourScript : MonoBehaviour, IGame
 
     public IState getInitState()
     {
-        return _tiles[0][0];
+        return _tiles[startTilePosition.x][startTilePosition.y];
     }
 
     public bool isGoal(IState state)
@@ -99,6 +101,12 @@ public class NewBehaviourScript : MonoBehaviour, IGame
             return tile.x == _width - 1 && tile.y == _height - 1;
         }
         return false;
+    }
+
+    public bool IsOffset(Vector2Int _tilePosition)
+    {
+        var isOffset = (_tilePosition.x % 2 == 0 && _tilePosition.y % 2 != 0) || (_tilePosition.x % 2 != 0 && _tilePosition.y % 2 == 0);
+        return isOffset;
     }
 
     public float getCost(IState state = null, IStep step  = null)

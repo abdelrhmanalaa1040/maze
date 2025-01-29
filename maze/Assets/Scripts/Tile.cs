@@ -65,17 +65,4 @@ public class Tile : MonoBehaviour, IState
     {
         _render.color = _pathColor;
     }
-
-    void Start()
-    {
-        Console.WriteLine("AHHH");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Console.WriteLine("AHHH");
-        
-    }
-    
 }

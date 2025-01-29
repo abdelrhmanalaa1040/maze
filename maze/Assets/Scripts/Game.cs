@@ -15,7 +15,6 @@ public interface IStep
 }
 public interface IGame 
 {
-  
     public IState getInitState();
     public bool isGoal( IState  state );
     public float getCost(IState state, IStep step);
