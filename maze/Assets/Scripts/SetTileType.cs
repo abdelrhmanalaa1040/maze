@@ -8,7 +8,7 @@ using UnityEngine;
 public class SetTileType : MonoBehaviour
 {
     public TileTypes TileType;
-    public Maze maze;
+    Maze maze;
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class SetTileType : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButton(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -26,21 +26,58 @@ public class SetTileType : MonoBehaviour
             if(hit.collider != null && hit.collider.gameObject.tag == "tile")
             {
                 Tile tile = hit.collider.gameObject.GetComponent<Tile>();
-                var isOffset = (tile.x % 2 == 0 && tile.y % 2 != 0) || (tile.x % 2 != 0 && tile.y % 2 == 0);
 
                 if (TileType == TileTypes.WALL)
                 {
-                    tile.SetType(TileTypes.WALL, false);
+                    tile.SetType(TileTypes.WALL, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
+                    if (maze.startTile == tile)
+                        maze.startTile = null;
+                    
+                    if (maze.endTile == tile)
+                        maze.endTile = null;
                 }
                 else if (TileType == TileTypes.WALKABLE)
                 {
-                    tile.SetType(TileTypes.WALKABLE, isOffset);
+                    tile.SetType(TileTypes.WALKABLE, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
+                    if (maze.startTile == tile)
+                        maze.startTile = null;
+
+                    if (maze.endTile == tile)
+                        maze.endTile = null;
+
                 }
                 else if (TileType == TileTypes.START)
                 {
-                    maze._tiles[maze.startTilePosition.x][maze.startTilePosition.y].SetType(TileTypes.WALKABLE, isOffset);
+
+                    if(maze.startTile != null)
+                        maze.startTile.SetType(TileTypes.WALKABLE, maze.IsOffset(new Vector2Int(maze.startTile.x, maze.startTile.y)));
+
+                    if (maze.endTile == tile)
+                        maze.endTile = null;
+
+                    tile.SetType(TileTypes.START, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
+
+                    maze.startTile = tile;
                 }
+                else if (TileType == TileTypes.END)
+                {
+                    if (maze.endTile != null)
+                        maze.endTile.SetType(TileTypes.WALKABLE, maze.IsOffset(new Vector2Int(maze.startTile.x, maze.startTile.y)));
+
+                    if (maze.startTile == tile)
+                        maze.startTile = null;
+
+                    tile.SetType(TileTypes.END, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
+
+                    maze.endTile= tile;
+                }
+
             }
+        }
+        //test 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            maze.StartSearch(new BreadthFS());
         }
     }
 }

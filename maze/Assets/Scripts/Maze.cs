@@ -15,8 +15,7 @@ public class Maze : MonoBehaviour, IGame
     
 
     [SerializeField] private Transform _cam;
-
-    public Vector2Int startTilePosition;
+    public Tile startTile, endTile;
     public List<GridStep> _steps = new List<GridStep>();
 
     void Start()
@@ -53,8 +52,7 @@ public class Maze : MonoBehaviour, IGame
 
                 spawnedTile.InitState(i, j);
               
-                Vector2Int tilePos = new Vector2Int(i, j);
-                spawnedTile.SetType(TileTypes.WALKABLE, IsOffset(tilePos));
+                spawnedTile.SetType(TileTypes.WALKABLE, IsOffset(new Vector2Int(i, j)));
 
                 // set StartPoint & EndPoint & Walkable
                 if (i == 0 && j == 0)
@@ -90,7 +88,7 @@ public class Maze : MonoBehaviour, IGame
 
     public IState getInitState()
     {
-        return _tiles[startTilePosition.x][startTilePosition.y];
+        return _tiles[startTile.x][startTile.y];
     }
 
     public bool isGoal(IState state)
@@ -98,7 +96,7 @@ public class Maze : MonoBehaviour, IGame
         if (state is Tile tile)
         {
             // Goal is bottom-right tile
-            return tile.x == _width - 1 && tile.y == _height - 1;
+            return tile.x == endTile.x && tile.y == endTile.y;
         }
         return false;
     }
@@ -113,6 +111,7 @@ public class Maze : MonoBehaviour, IGame
     {
         return 1.0f;
     }
+
     public List<IStep> getSteps(IState state)
     {
         var steps = new List<IStep>();

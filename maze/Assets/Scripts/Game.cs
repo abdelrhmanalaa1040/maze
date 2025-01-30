@@ -13,6 +13,7 @@ public interface IStep
 {
     public string Name { get; set; }
 }
+
 public interface IGame 
 {
     public IState getInitState();
