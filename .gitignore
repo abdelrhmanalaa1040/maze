@@ -29,6 +29,14 @@ sysinfo.txt
 .DS_Store
 
 ###
+# Visual Studio specific files
+###
+.vs/
+*.vsidx
+*.vspscc
+*.vssscc
+
+###
 # OS generated
 ###
 .DS_Store

@@ -122,3 +122,55 @@ public class  DepthFirstSearch: IAlgorithm
     }
 }
 
+public class Dijkstra : IAlgorithm
+{
+    public Tuple<List<IStep>, List<IState>> Search(IGame game, IState initialState)
+    {
+        var priorityQueue = new SortedSet<(int, Node)>(Comparer<(int, Node)>.Create((a, b) =>
+        {
+            int compare = a.Item1.CompareTo(b.Item1);
+            return compare == 0 ? a.Item2.GetHashCode().CompareTo(b.Item2.GetHashCode()) : compare;
+        }));
+
+        var exploredNodes = new List<IState>();
+        var explored = new Dictionary<IState, int>();
+
+        var startNode = new Node(initialState) { Cost = 0 };
+        priorityQueue.Add((0, startNode));
+        explored[initialState] = 0;
+
+        while (priorityQueue.Any())
+        {
+            var (currentCost, currentNode) = priorityQueue.Min;
+            priorityQueue.Remove(priorityQueue.Min);
+
+            if (game.isGoal(currentNode.State))
+                return Tuple.Create(currentNode.steps, exploredNodes);
+
+            if (!exploredNodes.Contains(currentNode.State))
+            {
+                exploredNodes.Add(currentNode.State);
+                foreach (var action in game.getSteps(currentNode.State))
+                {
+                    var successorState = game.getSuccessor(currentNode.State, action);
+                    int stepCost = (int)game.getCost(currentNode.State, action);
+                    int newCost = currentNode.Cost + stepCost;
+                    if (!explored.ContainsKey(successorState) || newCost < explored[successorState])
+                    {
+                        var newNode = new Node(successorState)
+                        {
+                            steps = new List<IStep>(currentNode.steps) { action },
+                            Cost = newCost
+                        };
+
+                        priorityQueue.Add((newCost, newNode));
+                        explored[successorState] = newCost;
+                    }
+                }
+            }
+        }
+
+        return Tuple.Create(new List<IStep>(), exploredNodes);
+    }
+}
+

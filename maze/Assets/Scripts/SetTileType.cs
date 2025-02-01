@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
 public class SetTileType : MonoBehaviour
 {
     public TileTypes TileType;
@@ -15,69 +14,66 @@ public class SetTileType : MonoBehaviour
         maze = GameObject.FindFirstObjectByType<Maze>();
     }
 
+    private void UpdateTileType(Tile tile, TileTypes newType)
+    {
+        if (maze.startTile == tile)
+            maze.startTile = null;
+
+        if (maze.endTile == tile)
+            maze.endTile = null;
+
+        tile.SetType(newType, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
+    }
+
+    private void SetStartTile(Tile tile)
+    {
+        if (maze.startTile != null)
+            UpdateTileType(maze.startTile, TileTypes.WALKABLE);
+
+        UpdateTileType(tile, TileTypes.START);
+        maze.startTile = tile;
+    }
+
+    private void SetEndTile(Tile tile)
+    {
+        if (maze.endTile != null)
+            UpdateTileType(maze.endTile, TileTypes.WALKABLE);
+
+        UpdateTileType(tile, TileTypes.END);
+        maze.endTile = tile;
+    }
+
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-            if(hit.collider != null && hit.collider.gameObject.tag == "tile")
+            if (hit.collider != null && hit.collider.gameObject.tag == "tile")
             {
                 Tile tile = hit.collider.gameObject.GetComponent<Tile>();
 
-                if (TileType == TileTypes.WALL)
+                if (TileType == TileTypes.WALL || TileType == TileTypes.WALKABLE)
                 {
-                    tile.SetType(TileTypes.WALL, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
-                    if (maze.startTile == tile)
-                        maze.startTile = null;
-                    
-                    if (maze.endTile == tile)
-                        maze.endTile = null;
-                }
-                else if (TileType == TileTypes.WALKABLE)
-                {
-                    tile.SetType(TileTypes.WALKABLE, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
-                    if (maze.startTile == tile)
-                        maze.startTile = null;
-
-                    if (maze.endTile == tile)
-                        maze.endTile = null;
-
+                    UpdateTileType(tile, TileType);
                 }
                 else if (TileType == TileTypes.START)
                 {
-
-                    if(maze.startTile != null)
-                        maze.startTile.SetType(TileTypes.WALKABLE, maze.IsOffset(new Vector2Int(maze.startTile.x, maze.startTile.y)));
-
-                    if (maze.endTile == tile)
-                        maze.endTile = null;
-
-                    tile.SetType(TileTypes.START, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
-
-                    maze.startTile = tile;
+                    SetStartTile(tile); 
                 }
                 else if (TileType == TileTypes.END)
                 {
-                    if (maze.endTile != null)
-                        maze.endTile.SetType(TileTypes.WALKABLE, maze.IsOffset(new Vector2Int(maze.startTile.x, maze.startTile.y)));
-
-                    if (maze.startTile == tile)
-                        maze.startTile = null;
-
-                    tile.SetType(TileTypes.END, maze.IsOffset(new Vector2Int(tile.x, tile.y)));
-
-                    maze.endTile= tile;
+                    SetEndTile(tile);
                 }
-
             }
         }
-        //test 
+
+        //test
         if (Input.GetKeyDown(KeyCode.T))
         {
-            maze.StartSearch(new BreadthFS());
+            print("start");
+            maze.StartSearch(new Dijkstra());
         }
     }
 }
