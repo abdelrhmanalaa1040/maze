@@ -362,12 +362,7 @@ MonoBehaviour:
   _width: 2
   _height: 5
   tileSize: 8
-  tileData:
-  - color: {r: 0.7283019, g: 0.7283019, b: 0.7283019, a: 0}
-    x: 0
-    y: 0
-    tileType: 0
-    tileCost: 0
+  tileData: []
   maze: {fileID: 1223854465}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using System.IO;
 
 
 public class Maze : MonoBehaviour, IGame
@@ -14,7 +16,7 @@ public class Maze : MonoBehaviour, IGame
     public int _width, _height;
     [HideInInspector] public List<List<Tile>> _tiles;
 
-    [HideInInspector] public Tile startTile, endTile;
+    public Tile startTile, endTile;
     [HideInInspector] public List<GridStep> _steps = new List<GridStep>();
     
     public Strategy strategy;
@@ -49,6 +51,11 @@ public class Maze : MonoBehaviour, IGame
             print("start");
             selectingAlgorithm();
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadFromJson();
+        }
     }
 
     void selectingAlgorithm()
@@ -69,10 +76,11 @@ public class Maze : MonoBehaviour, IGame
 
     void GenerateGrid()
     {
-
+        print("new maze");
         _tiles = new List<List<Tile>>();
         _steps = new List<GridStep>();
-
+        previousHeight = _height;
+        previousWidth = _width;
         _steps.Add(new GridStep(DIRECTION.DOWN));
         _steps.Add(new GridStep(DIRECTION.LEFT));
         _steps.Add(new GridStep(DIRECTION.UP));
@@ -106,6 +114,41 @@ public class Maze : MonoBehaviour, IGame
         }
 
         _cam.transform.position = new Vector3((_width * tileSize) /2 - (0.5f * tileSize), (_height * tileSize) / 2 - (0.5f * tileSize), -10);
+    }
+
+    public void LoadFromJson()
+    {
+        string filePath = Application.persistentDataPath + "/MazeData.json";
+
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+
+            MazeData mazeData = JsonUtility.FromJson<MazeData>(json);
+
+            _width = mazeData._width;
+            _height = mazeData._height;
+            GenerateGrid();
+            tileSize = mazeData.tileSize;
+                                                                                                                                               
+
+            for (int i = 0; i < _width; i++)
+            {
+                for (int j = 0; j < _height; j++)
+                {
+                    TileData data = mazeData.tileData[(i * mazeData._width) + j];
+                    _tiles[i][j]._render.color = data.color;
+                    _tiles[i][j].TileType = data.tileType;
+                }
+            }
+            startTile = _tiles[mazeData.startTileX][mazeData.startTileY];
+            endTile = _tiles[mazeData.endTileX][mazeData.endTileY];
+            Debug.Log("Data loaded from " + filePath);
+        }
+        else
+        {
+            Debug.LogError("No saved data found at " + filePath);
+        }
     }
 
     public IState getInitState()

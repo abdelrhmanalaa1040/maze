@@ -7,6 +7,7 @@ public class MazeData
 {
     public int _width, _height;
     public float tileSize;
+    public int startTileX, startTileY, endTileX, endTileY;
     public List<TileData> tileData;
 }
 
