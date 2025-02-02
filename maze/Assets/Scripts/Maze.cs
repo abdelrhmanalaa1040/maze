@@ -7,18 +7,23 @@ using UnityEngine;
 
 public class Maze : MonoBehaviour, IGame
 {
-    [SerializeField] private int _width, _height;
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private MyButton _btnPrefab;
-
-    public List<List<Tile>> _tiles;
-    
-
     [SerializeField] private Transform _cam;
-    public Tile startTile, endTile;
-    public List<GridStep> _steps = new List<GridStep>();
-    float tileSize;
+    
+    public int _width, _height;
+    [HideInInspector] public List<List<Tile>> _tiles;
+
+    [HideInInspector] public Tile startTile, endTile;
+    [HideInInspector] public List<GridStep> _steps = new List<GridStep>();
+    
+    public Strategy strategy;
+
+    [HideInInspector] public float tileSize;
     float longestDimension;
+
+    int previousHeight;
+    int previousWidth;
 
     void Start()
     {
@@ -32,26 +37,53 @@ public class Maze : MonoBehaviour, IGame
             GenerateGrid();
         }
 
+        if (previousHeight != _height || previousWidth != _width)
+        {
+            GenerateGrid();
+            previousHeight = _height; 
+            previousWidth = _width;
+        }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            print("start");
+            selectingAlgorithm();
+        }
     }
 
+    void selectingAlgorithm()
+    {
+        if (strategy == Strategy.DFS)
+        {
+            StartSearch(new DepthFirstSearch());
+        }
+        else if (strategy == Strategy.BFS)
+        {
+            StartSearch(new BreadthFS());
+        }
+        else if (strategy == Strategy.Dijkstra)
+        {
+            StartSearch(new Dijkstra());
+        }
+    }
 
     void GenerateGrid()
     {
+
         _tiles = new List<List<Tile>>();
         _steps = new List<GridStep>();
 
-        _steps.Add(new GridStep(DIRECTION.UP));
-        _steps.Add(new GridStep(DIRECTION.LEFT));
-        _steps.Add(new GridStep(DIRECTION.RIGHT));
         _steps.Add(new GridStep(DIRECTION.DOWN));
+        _steps.Add(new GridStep(DIRECTION.LEFT));
+        _steps.Add(new GridStep(DIRECTION.UP));
+        _steps.Add(new GridStep(DIRECTION.RIGHT));
 
         startTile = endTile = null;
 
         DeleteAllTiles();
         UpdateMazeSize();
 
-        for (int i = 0; i < longestDimension; i++)
+        for (int i = 0; i < _width; i++)
         {
             var row = new List<Tile>();
 
@@ -191,24 +223,12 @@ public class Maze : MonoBehaviour, IGame
 
     public void UpdateMazeSize()
     {
-        Math.Clamp(_height, 5, 100);
-        Math.Clamp(_width, 5, 100);
-
-        if (Math.Abs(_height - _width) > 5)
-        {
-            if (_width > _width)
-            {
-                _width = _height - 5;
-            }
-            else
-            {
-                _height = _width - 5;
-            }
-        }
+        _height = Math.Clamp(_height, 5, 100);
+        _width = Math.Clamp(_width, 5, 100);
 
         longestDimension = Math.Max(_height, _width);
 
-        tileSize = 5f / longestDimension;
+        tileSize = 8f / longestDimension;
     }
 }
 

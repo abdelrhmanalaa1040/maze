@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 1223854466}
   - component: {fileID: 1223854465}
   - component: {fileID: 1223854467}
+  - component: {fileID: 1223854468}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -309,13 +310,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b5b82a163eb2547aea9841cf059bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 8
-  _height: 8
   _tilePrefab: {fileID: 6770423031677464033, guid: e26f863527aa01a4a94037f41496d0f7, type: 3}
   _btnPrefab: {fileID: 3402147228785869102, guid: b6e6bbf6b7c715e42b0c921079825dfa, type: 3}
   _cam: {fileID: 519420032}
+  _width: 8
+  _height: 8
   startTile: {fileID: 0}
   endTile: {fileID: 0}
+  strategy: 0
+  tileSize: 0
 --- !u!4 &1223854466
 Transform:
   m_ObjectHideFlags: 0
@@ -344,6 +347,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileType: 2
+--- !u!114 &1223854468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223854464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1e94bd8ebf1724894e55a6ccd777eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _width: 2
+  _height: 5
+  tileSize: 8
+  tileData:
+  - color: {r: 0.7283019, g: 0.7283019, b: 0.7283019, a: 0}
+    x: 0
+    y: 0
+    tileType: 0
+    tileCost: 0
+  maze: {fileID: 1223854465}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

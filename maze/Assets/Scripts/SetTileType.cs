@@ -69,11 +69,6 @@ public class SetTileType : MonoBehaviour
             }
         }
 
-        //test
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            print("start");
-            maze.StartSearch(new Dijkstra());
-        }
+        
     }
 }

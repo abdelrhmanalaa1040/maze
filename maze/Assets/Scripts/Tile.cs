@@ -16,7 +16,7 @@ public class Tile : MonoBehaviour, IState
 
     [SerializeField] private Color _baseColor, _offsetColor, _wallColor, _pointColor, _visitedColor, _pathColor;
 
-    [SerializeField] private SpriteRenderer _render;
+    [SerializeField] public SpriteRenderer _render;
 
     public int x, y;
     public string Name { get; set; }

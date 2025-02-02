@@ -9,11 +9,10 @@ public enum Strategy
     BreadthFS,
     DFS,
     UCS,
-    BestFS,
-    AStar
+    BFS,
+    AStar,
+    Dijkstra
 }
-
-
 
 public interface IAlgorithm
 {
