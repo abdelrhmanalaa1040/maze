@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public enum TileTypes
 {
@@ -14,14 +16,15 @@ public enum TileTypes
 public class Tile : MonoBehaviour, IState
 {
 
+    
     [SerializeField] private Color _baseColor, _offsetColor, _wallColor, _pointColor, _visitedColor, _pathColor;
 
     [SerializeField] public SpriteRenderer _render;
-
+    
     public int x, y;
     public string Name { get; set; }
-
     public TileTypes TileType;
+
 
     public void InitState(int x, int y)
     {
@@ -29,6 +32,7 @@ public class Tile : MonoBehaviour, IState
         this.x = x;
         this.y = y;
     }
+
 
     public void Init(bool isOffset)
     {

@@ -313,11 +313,11 @@ MonoBehaviour:
   _tilePrefab: {fileID: 6770423031677464033, guid: e26f863527aa01a4a94037f41496d0f7, type: 3}
   _btnPrefab: {fileID: 3402147228785869102, guid: b6e6bbf6b7c715e42b0c921079825dfa, type: 3}
   _cam: {fileID: 519420032}
-  _width: 8
-  _height: 8
+  _width: 5
+  _height: 5
   startTile: {fileID: 0}
   endTile: {fileID: 0}
-  strategy: 0
+  strategy: 5
   tileSize: 0
 --- !u!4 &1223854466
 Transform:
