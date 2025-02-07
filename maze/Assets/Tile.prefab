@@ -182,8 +182,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.003418
-      value: 0.9095192
+      time: 1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -194,5 +194,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   tile: {fileID: 6770423031677464033}
-  delay: 0.136
+  delay: 0.2
   AnimationSpeed: 0.3
