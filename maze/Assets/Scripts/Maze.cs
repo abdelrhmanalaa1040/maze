@@ -99,7 +99,7 @@ public class Maze : MonoBehaviour, IGame
             {
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(i* tileSize, j* tileSize), Quaternion.identity);
                 spawnedTile.transform.parent = gameObject.transform;
-                spawnedTile.transform.localScale = new Vector2(tileSize, tileSize);
+                spawnedTile.transform.localScale = new Vector3(tileSize, tileSize,transform.position.z);
 
                 spawnedTile.name = $"Tile {i} {j}";
 
