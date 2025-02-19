@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SaveMaze : MonoBehaviour
+public class SaveingMaze : MonoBehaviour
 {
     public int _width, _height;
     public float tileSize;
