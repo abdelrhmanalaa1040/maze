@@ -27,17 +27,17 @@ public class SaveingMaze : MonoBehaviour
     {
         tileData = new List<TileData>();
 
-        for (int i = 0; i < maze._width; i++)
+        for (int j = 0; j < maze._height; j++) 
         {
-            var row = new List<Tile>();
-            for (int j = 0; j < maze._height; j++)
+            for (int i = 0; i < maze._width; i++) 
             {
                 tileData.Add(new TileData());
                 Tile tile = maze._tiles[i][j];
-                tileData[(i * maze._width) + j].color = tile._render.color;
-                tileData[(i * maze._width) + j].tileType = tile.TileType;
-                tileData[(i * maze._width) + j].tileCost = 1;
-                print((i * maze._width) + j);
+                int index = (j * maze._width) + i;
+                tileData[index].color = tile._render.color;
+                tileData[index].tileType = tile.TileType;
+                tileData[index].tileCost = 1;
+                print(index);
             }
         }
 
@@ -46,10 +46,10 @@ public class SaveingMaze : MonoBehaviour
             _width = maze._width,
             _height = maze._height,
             tileSize = maze.tileSize,
-            startTileX = maze.startTile.x,
-            startTileY = maze.startTile.y,
-            endTileX = maze.endTile.x,
-            endTileY = maze.endTile.y,
+            startTileX = maze.startTile != null ? maze.startTile.x : -1,
+            startTileY = maze.startTile != null ? maze.startTile.y : -1,
+            endTileX = maze.endTile != null ? maze.endTile.x : -1,
+            endTileY = maze.endTile != null ? maze.endTile.y : -1,
             tileData = tileData
         };
 

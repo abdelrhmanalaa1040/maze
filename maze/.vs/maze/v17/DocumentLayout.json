@@ -1,52 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\abdelrhman\\my project\\maze\\maze\\",
+  "WorkspaceRootPath": "E:\\abdelrhman\\maze\\maze\\maze\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|e:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\saveingmaze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\saveingmaze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|e:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\tileanimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tileanimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\maze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\maze\\maze\\maze\\assets\\scripts\\maze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\maze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|e:\\abdelrhman\\maze\\maze\\maze\\assets\\scripts\\saveingmaze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\saveingmaze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\settiletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\settiletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\maze\\maze\\maze\\assets\\scripts\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\algorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\algorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|E:\\abdelrhman\\my project\\maze\\maze\\assets\\scripts\\gridstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198AF6B6-ACD0-1022-2095-3837BF2CDCFC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gridstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\abdelrhman\\my project\\data structure project LOL\\Assets\\Scripts\\cellType.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\abdelrhman\\my project\\data structure project LOL\\Assets\\Scripts\\Maze.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{173DD4D5-F450-8E85-3342-F085E16892F9}|Unity.PlasticSCM.Editor.csproj|E:\\abdelrhman\\my project\\maze\\maze\\library\\packagecache\\com.unity.collab-proxy@2.6.0\\editor\\viewswitcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{173DD4D5-F450-8E85-3342-F085E16892F9}|Unity.PlasticSCM.Editor.csproj|solutionrelative:library\\packagecache\\com.unity.collab-proxy@2.6.0\\editor\\viewswitcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,161 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TileAnimation.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\TileAnimation.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TileAnimation.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\TileAnimation.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TileAnimation.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAowBUAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T16:11:39.157Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Maze.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Maze.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Maze.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Maze.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Maze.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAYwGcAAAAzAAAA",
+              "Title": "Data.cs",
+              "DocumentMoniker": "E:\\abdelrhman\\maze\\maze\\maze\\Assets\\Scripts\\Data.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Data.cs",
+              "ToolTip": "E:\\abdelrhman\\maze\\maze\\maze\\Assets\\Scripts\\Data.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Data.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T02:11:07.803Z"
+              "WhenOpened": "2025-04-15T23:39:47.891Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SaveingMaze.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\SaveingMaze.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\SaveingMaze.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\SaveingMaze.cs",
-              "RelativeToolTip": "Assets\\Scripts\\SaveingMaze.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAAjAAAA",
+              "Title": "Maze.cs",
+              "DocumentMoniker": "E:\\abdelrhman\\maze\\maze\\maze\\Assets\\Scripts\\Maze.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Maze.cs",
+              "ToolTip": "E:\\abdelrhman\\maze\\maze\\maze\\Assets\\Scripts\\Maze.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Maze.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAQwJcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T17:21:20.479Z",
+              "WhenOpened": "2025-04-15T23:34:21.91Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Data.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Data.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Data.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Data.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Data.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAVAAAA",
+              "DocumentIndex": 1,
+              "Title": "SaveingMaze.cs",
+              "DocumentMoniker": "E:\\abdelrhman\\maze\\maze\\maze\\Assets\\Scripts\\SaveingMaze.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SaveingMaze.cs",
+              "ToolTip": "E:\\abdelrhman\\maze\\maze\\maze\\Assets\\Scripts\\SaveingMaze.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SaveingMaze.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAEwCwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T19:03:05.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ViewSwitcher.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Library\\PackageCache\\com.unity.collab-proxy@2.6.0\\Editor\\ViewSwitcher.cs",
-              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.collab-proxy@2.6.0\\Editor\\ViewSwitcher.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Library\\PackageCache\\com.unity.collab-proxy@2.6.0\\Editor\\ViewSwitcher.cs",
-              "RelativeToolTip": "Library\\PackageCache\\com.unity.collab-proxy@2.6.0\\Editor\\ViewSwitcher.cs",
-              "ViewState": "AQIAANEAAAAAAAAAAAAUwMwAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T17:54:07.245Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Maze.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\data structure project LOL\\Assets\\Scripts\\Maze.cs",
-              "RelativeDocumentMoniker": "..\\..\\data structure project LOL\\Assets\\Scripts\\Maze.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\data structure project LOL\\Assets\\Scripts\\Maze.cs",
-              "RelativeToolTip": "..\\..\\data structure project LOL\\Assets\\Scripts\\Maze.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T17:02:17.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "cellType.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\data structure project LOL\\Assets\\Scripts\\cellType.cs",
-              "RelativeDocumentMoniker": "..\\..\\data structure project LOL\\Assets\\Scripts\\cellType.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\data structure project LOL\\Assets\\Scripts\\cellType.cs",
-              "RelativeToolTip": "..\\..\\data structure project LOL\\Assets\\Scripts\\cellType.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T17:02:06.085Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SetTileType.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\SetTileType.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\SetTileType.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\SetTileType.cs",
-              "RelativeToolTip": "Assets\\Scripts\\SetTileType.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEcAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T16:49:38.222Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Game.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Game.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Game.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Game.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Game.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T15:56:04.737Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Tile.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Tile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Tile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAYwC8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T02:23:42.961Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GridStep.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\GridStep.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GridStep.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\GridStep.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GridStep.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T02:11:01.478Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Algorithm.cs",
-              "DocumentMoniker": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Algorithm.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Algorithm.cs",
-              "ToolTip": "E:\\abdelrhman\\my project\\maze\\maze\\Assets\\Scripts\\Algorithm.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Algorithm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T02:10:37.779Z"
+              "WhenOpened": "2025-04-15T23:30:44.269Z",
+              "EditorCaption": ""
             }
           ]
         }

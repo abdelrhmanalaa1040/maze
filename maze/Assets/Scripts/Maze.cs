@@ -130,19 +130,26 @@ public class Maze : MonoBehaviour, IGame
             _height = mazeData._height;
             GenerateGrid();
             tileSize = mazeData.tileSize;
-                                                                                                                                               
+
 
             for (int i = 0; i < _width; i++)
             {
                 for (int j = 0; j < _height; j++)
                 {
-                    TileData data = mazeData.tileData[(i * mazeData._width) + j];
+                    TileData data = mazeData.tileData[(j * mazeData._width) + i];
                     _tiles[i][j]._render.color = data.color;
                     _tiles[i][j].TileType = data.tileType;
                 }
             }
-            startTile = _tiles[mazeData.startTileX][mazeData.startTileY];
-            endTile = _tiles[mazeData.endTileX][mazeData.endTileY];
+
+            bool IsValid(int x, int y) => x >= 0 && x < _width && y >= 0 && y < _height;
+
+            if (IsValid(mazeData.startTileX, mazeData.startTileY))
+                startTile = _tiles[mazeData.startTileX][mazeData.startTileY];
+
+            if (IsValid(mazeData.endTileX, mazeData.endTileY))
+                endTile = _tiles[mazeData.endTileX][mazeData.endTileY];
+
             Debug.Log("Data loaded from " + filePath);
         }
         else
