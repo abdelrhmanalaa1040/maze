@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class TileAnimation : MonoBehaviour
@@ -16,19 +17,26 @@ public class TileAnimation : MonoBehaviour
 
     void Start()
     {
-        _tileSize = transform.localScale;
-        transform.localScale = Vector3.one * 0.01f;
+        if (AnimationSpeed > 0)
+        {
+            _tileSize = transform.localScale;
+            transform.localScale = Vector3.one * 0.01f;
+        }
     }
+
     void Update()
     {
-        float totalTime = (_time / AnimationSpeed) - (delay * (tile.x + tile.y));
-        _time += Time.deltaTime;
-        Vector2 currentTileSize = _tileSize * curve.Evaluate(totalTime);
-        transform.localScale = currentTileSize;
-        
-        if(totalTime > curve.length)
+        if(AnimationSpeed > 0)
         {
-            Destroy(gameObject.GetComponent<TileAnimation>());
+            float totalTime = (_time / AnimationSpeed) - (delay * (tile.x + tile.y));
+            _time += Time.deltaTime;
+            Vector2 currentTileSize = _tileSize * curve.Evaluate(totalTime);
+            transform.localScale = currentTileSize;
+
+            if (totalTime > curve.length)
+            {
+                Destroy(gameObject.GetComponent<TileAnimation>());
+            }
         }
     }
 

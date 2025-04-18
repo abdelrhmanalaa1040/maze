@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.IO;
+using UnityEngine.UI;
 
 
 public class Maze : MonoBehaviour, IGame
@@ -12,13 +13,18 @@ public class Maze : MonoBehaviour, IGame
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private MyButton _btnPrefab;
     [SerializeField] private Transform _cam;
-    
+    [SerializeField] private bool useAnimationDelay = true;
+    [SerializeField] private int stepLimit;
+
+    public float tileAnimationSpeed = 0.2f;
+    public Slider stepsSlider;
+
     public int _width, _height;
     [HideInInspector] public List<List<Tile>> _tiles;
 
     public Tile startTile, endTile;
     [HideInInspector] public List<GridStep> _steps = new List<GridStep>();
-    
+
     public Strategy strategy;
 
     [HideInInspector] public float tileSize;
@@ -29,27 +35,32 @@ public class Maze : MonoBehaviour, IGame
 
     void Start()
     {
-        GenerateGrid();
+        GenerateGrid(tileAnimationSpeed);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            GenerateGrid();
+            GenerateGrid(tileAnimationSpeed);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RefreshTiles();
         }
 
         if (previousHeight != _height || previousWidth != _width)
         {
-            GenerateGrid();
-            previousHeight = _height; 
+            GenerateGrid(tileAnimationSpeed);
+            previousHeight = _height;
             previousWidth = _width;
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
             print("start");
-            selectingAlgorithm();
+            selectingAlgorithm(false);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -58,23 +69,24 @@ public class Maze : MonoBehaviour, IGame
         }
     }
 
-    void selectingAlgorithm()
+    void selectingAlgorithm(bool _addLimit)
     {
         if (strategy == Strategy.DFS)
         {
-            StartSearch(new DepthFirstSearch());
+            StartSearch(new DepthFirstSearch(), _addLimit);
         }
         else if (strategy == Strategy.BFS)
         {
-            StartSearch(new BreadthFS());
+            StartSearch(new BreadthFS(), _addLimit);
         }
         else if (strategy == Strategy.Dijkstra)
         {
-            StartSearch(new Dijkstra());
+            StartSearch(new Dijkstra(), _addLimit);
         }
+
     }
 
-    void GenerateGrid()
+    void GenerateGrid(float _tileAnimationSpeed)
     {
         print("new maze");
         _tiles = new List<List<Tile>>();
@@ -97,14 +109,14 @@ public class Maze : MonoBehaviour, IGame
 
             for (int j = 0; j < _height; j++)
             {
-                var spawnedTile = Instantiate(_tilePrefab, new Vector3(i* tileSize, j* tileSize), Quaternion.identity);
+                var spawnedTile = Instantiate(_tilePrefab, new Vector3(i * tileSize, j * tileSize), Quaternion.identity);
                 spawnedTile.transform.parent = gameObject.transform;
-                spawnedTile.transform.localScale = new Vector3(tileSize, tileSize,transform.position.z);
-
+                spawnedTile.transform.localScale = new Vector3(tileSize, tileSize, transform.position.z);
+                spawnedTile.GetComponent<TileAnimation>().AnimationSpeed = _tileAnimationSpeed;
                 spawnedTile.name = $"Tile {i} {j}";
 
                 spawnedTile.InitState(i, j);
-              
+
                 spawnedTile.SetType(TileTypes.WALKABLE, IsOffset(new Vector2Int(i, j)));
 
                 row.Add(spawnedTile);
@@ -113,7 +125,20 @@ public class Maze : MonoBehaviour, IGame
             _tiles.Add(row);
         }
 
-        _cam.transform.position = new Vector3((_width * tileSize) /2 - (0.5f * tileSize), (_height * tileSize) / 2 - (0.5f * tileSize), -10);
+        _cam.transform.position = new Vector3((_width * tileSize) / 2 - (0.5f * tileSize), (_height * tileSize) / 2 - (0.5f * tileSize), -10);
+    }
+
+    void RefreshTiles()
+    {
+        for (int i = 0; i < _width; i++)
+        {
+            for (int j = 0; j < _height; j++)
+            {
+                Tile _tile = _tiles[i][j].GetComponent<Tile>();
+
+                _tile.SetType(_tile.TileType, IsOffset(new Vector2Int(i, j)));
+            }
+        }
     }
 
     public void LoadFromJson()
@@ -128,9 +153,8 @@ public class Maze : MonoBehaviour, IGame
 
             _width = mazeData._width;
             _height = mazeData._height;
-            GenerateGrid();
+            GenerateGrid(tileAnimationSpeed);
             tileSize = mazeData.tileSize;
-
 
             for (int i = 0; i < _width; i++)
             {
@@ -188,7 +212,7 @@ public class Maze : MonoBehaviour, IGame
         return isOffset;
     }
 
-    public float getCost(IState state = null, IStep step  = null)
+    public float getCost(IState state = null, IStep step = null)
     {
         return 1.0f;
     }
@@ -234,15 +258,25 @@ public class Maze : MonoBehaviour, IGame
         return null;
     }
 
-    public IEnumerator AnimatePath(List<IState> exploredNodes, List<IStep> pathSteps)
+    public IEnumerator AnimatePath(List<IState> exploredNodes, List<IStep> pathSteps, int _stepLimit, bool _useAnimationDelay)
     {
+        int stepCount = 0;
+
         // Animate explored nodes
         foreach (var state in exploredNodes)
         {
+            if (stepCount >= _stepLimit)
+                yield break; // Stop if step limit is reached
+
             if (state is Tile tile)
             {
-                tile.HighlightAsVisited(); // Highlight the explored tile
-                yield return new WaitForSeconds(0.1f); // Delay for animation
+                tile.HighlightAsVisited();
+                if (_useAnimationDelay)
+                {
+                    yield return new WaitForSeconds(0.1f); // Delay for animation
+                }
+                stepCount++;
+                stepsSlider.value = stepCount;
             }
         }
 
@@ -250,17 +284,24 @@ public class Maze : MonoBehaviour, IGame
         var currentTile = getInitState() as Tile;
         foreach (var step in pathSteps)
         {
+            if (stepCount >= _stepLimit)
+                yield break; // Stop if step limit is reached
+
             if (currentTile != null)
             {
                 currentTile.HighlightAsPath();
-                yield return new WaitForSeconds(0.2f); // Animation delay
+                if (_useAnimationDelay)
+                {
+                    yield return new WaitForSeconds(0.2f); // Animation delay
+                }
+                stepCount++;
+                stepsSlider.value = stepCount;
             }
-
             currentTile = getSuccessor(currentTile, step) as Tile;
         }
     }
 
-    public void StartSearch(IAlgorithm algorithm)
+    public void StartSearch(IAlgorithm algorithm, bool _addLimit)
     {
         var initialState = getInitState();
         var result = algorithm.Search(this, initialState);
@@ -268,7 +309,18 @@ public class Maze : MonoBehaviour, IGame
         var exploredNodes = result.Item2; // Explored nodes
         var pathSteps = result.Item1; // Path to goal
 
-        StartCoroutine(AnimatePath(exploredNodes, pathSteps));
+        stepsSlider.maxValue = exploredNodes.Count + pathSteps.Count;
+        if (_addLimit == false)
+            StartCoroutine(AnimatePath(exploredNodes, pathSteps, exploredNodes.Count + pathSteps.Count, true));
+        else
+            StartCoroutine(AnimatePath(exploredNodes, pathSteps, (int)stepsSlider.value, false));
+    }
+
+    public void ReStartSearch()
+    {
+        print("ReStartSearch");
+        RefreshTiles();
+        selectingAlgorithm(true);
     }
 
     public void UpdateMazeSize()
@@ -281,5 +333,3 @@ public class Maze : MonoBehaviour, IGame
         tileSize = 8f / longestDimension;
     }
 }
-
-
