@@ -9,6 +9,7 @@ public class TileAnimation : MonoBehaviour
 {
     public AnimationCurve curve;
     public Tile tile;
+
     [Range(0, 1)]
     public float delay;
     public float AnimationSpeed;
@@ -39,5 +40,4 @@ public class TileAnimation : MonoBehaviour
             }
         }
     }
-
 }

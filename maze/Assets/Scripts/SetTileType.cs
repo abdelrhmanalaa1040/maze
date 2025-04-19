@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class SetTileType : MonoBehaviour
 {
@@ -68,7 +69,17 @@ public class SetTileType : MonoBehaviour
                 }
             }
         }
+    }
 
-        
+    public void selectTile(int _tileNum)
+    {
+        if (_tileNum == 0)
+            TileType = TileTypes.WALL;
+        else if (_tileNum == 1)
+            TileType = TileTypes.WALKABLE;
+        else if (_tileNum == 2) 
+            TileType = TileTypes.START;
+        else if (_tileNum == 3)
+            TileType = TileTypes.END;
     }
 }

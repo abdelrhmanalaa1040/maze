@@ -15,11 +15,13 @@ public class Maze : MonoBehaviour, IGame
     [SerializeField] private Transform _cam;
     [SerializeField] private bool useAnimationDelay = true;
     [SerializeField] private int stepLimit;
+    public Slider WidthSlider;
+    public Slider HeightSlider;
 
     public float tileAnimationSpeed = 0.2f;
     public Slider stepsSlider;
 
-    public int _width, _height;
+    public int width, height;
     [HideInInspector] public List<List<Tile>> _tiles;
 
     public Tile startTile, endTile;
@@ -50,11 +52,11 @@ public class Maze : MonoBehaviour, IGame
             RefreshTiles();
         }
 
-        if (previousHeight != _height || previousWidth != _width)
+        if (previousHeight != height || previousWidth != width)
         {
             GenerateGrid(tileAnimationSpeed);
-            previousHeight = _height;
-            previousWidth = _width;
+            previousHeight = height;
+            previousWidth = width;
         }
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -86,13 +88,13 @@ public class Maze : MonoBehaviour, IGame
 
     }
 
-    void GenerateGrid(float _tileAnimationSpeed)
+    public void GenerateGrid(float _tileAnimationSpeed)
     {
         print("new maze");
         _tiles = new List<List<Tile>>();
         _steps = new List<GridStep>();
-        previousHeight = _height;
-        previousWidth = _width;
+        previousHeight = height;
+        previousWidth = width;
         _steps.Add(new GridStep(DIRECTION.DOWN));
         _steps.Add(new GridStep(DIRECTION.LEFT));
         _steps.Add(new GridStep(DIRECTION.UP));
@@ -103,13 +105,13 @@ public class Maze : MonoBehaviour, IGame
         DeleteAllTiles();
         UpdateMazeSize();
 
-        for (int i = 0; i < _width; i++)
+        for (int i = 0; i < width; i++)
         {
             var row = new List<Tile>();
 
-            for (int j = 0; j < _height; j++)
+            for (int j = 0; j < height; j++)
             {
-                var spawnedTile = Instantiate(_tilePrefab, new Vector3(i * tileSize, j * tileSize), Quaternion.identity);
+                var spawnedTile = Instantiate(_tilePrefab, new Vector3(i * tileSize, j * tileSize) + transform.position, Quaternion.identity);
                 spawnedTile.transform.parent = gameObject.transform;
                 spawnedTile.transform.localScale = new Vector3(tileSize, tileSize, transform.position.z);
                 spawnedTile.GetComponent<TileAnimation>().AnimationSpeed = _tileAnimationSpeed;
@@ -125,14 +127,14 @@ public class Maze : MonoBehaviour, IGame
             _tiles.Add(row);
         }
 
-        _cam.transform.position = new Vector3((_width * tileSize) / 2 - (0.5f * tileSize), (_height * tileSize) / 2 - (0.5f * tileSize), -10);
+        _cam.transform.position = new Vector3((width * tileSize) / 2 - (0.5f * tileSize), (height * tileSize) / 2 - (0.5f * tileSize), -10);
     }
 
     void RefreshTiles()
     {
-        for (int i = 0; i < _width; i++)
+        for (int i = 0; i < width; i++)
         {
-            for (int j = 0; j < _height; j++)
+            for (int j = 0; j < height; j++)
             {
                 Tile _tile = _tiles[i][j].GetComponent<Tile>();
 
@@ -151,14 +153,14 @@ public class Maze : MonoBehaviour, IGame
 
             MazeData mazeData = JsonUtility.FromJson<MazeData>(json);
 
-            _width = mazeData._width;
-            _height = mazeData._height;
+            width = mazeData._width;
+            height = mazeData._height;
             GenerateGrid(tileAnimationSpeed);
             tileSize = mazeData.tileSize;
-
-            for (int i = 0; i < _width; i++)
+           
+            for (int i = 0; i < width; i++)
             {
-                for (int j = 0; j < _height; j++)
+                for (int j = 0; j < height; j++)
                 {
                     TileData data = mazeData.tileData[(j * mazeData._width) + i];
                     _tiles[i][j]._render.color = data.color;
@@ -166,7 +168,10 @@ public class Maze : MonoBehaviour, IGame
                 }
             }
 
-            bool IsValid(int x, int y) => x >= 0 && x < _width && y >= 0 && y < _height;
+            print(mazeData.tileData.Count);
+
+
+            bool IsValid(int x, int y) => x >= 0 && x < width && y >= 0 && y < height;
 
             if (IsValid(mazeData.startTileX, mazeData.startTileY))
                 startTile = _tiles[mazeData.startTileX][mazeData.startTileY];
@@ -229,7 +234,7 @@ public class Maze : MonoBehaviour, IGame
                 int newY = currentTile.y + step.dy;
 
                 // Check if the new position is within grid boundaries
-                if (newX >= 0 && newX < _width && newY >= 0 && newY < _height)
+                if (newX >= 0 && newX < width && newY >= 0 && newY < height)
                 {
                     var targetTile = _tiles[newX][newY];
 
@@ -325,11 +330,21 @@ public class Maze : MonoBehaviour, IGame
 
     public void UpdateMazeSize()
     {
-        _height = Math.Clamp(_height, 5, 100);
-        _width = Math.Clamp(_width, 5, 100);
+        height = Math.Clamp(height, 5, 100);
+        width = Math.Clamp(width, 5, 100);
 
-        longestDimension = Math.Max(_height, _width);
+        longestDimension = Math.Max(height, width);
 
         tileSize = 8f / longestDimension;
+    }
+
+    public void set_width()
+    {
+        width = (int)WidthSlider.value;
+    }
+
+    public void set_height()
+    {
+        height = (int)HeightSlider.value;
     }
 }
